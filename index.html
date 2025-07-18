@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Dzi | Batcave Website</title>
+
+<!-- Batman Forever Font -->
+<link href="batmfa__.ttf" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    overflow-x: hidden;
+    font-family: 'Batman Forever', sans-serif;
+    background: #000;
+}
+
+.stars {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -2;
+}
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    animation: starAnim linear infinite;
+}
+
+@keyframes starAnim {
+    from { transform: translateY(-10px); opacity: 1; }
+    to { transform: translateY(100vh); opacity: 0; }
+}
+
+.container {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+    background: rgba(0,0,0,0.5);
+    padding: 30px;
+    color: #f5f5f5;
+    text-align: center;
+    z-index: 1;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+    margin: 30px;
+}
+
+h1 {
+    font-size: 3em;
+    color: #ffcc00;
+    text-shadow: 0 0 10px #49411e, 0 0 20px #ffcc00;
+    margin: 20px 0;
+    letter-spacing: 2px;
+}
+
+p {
+    max-width: 500px;
+    margin: 20px auto;
+    font-size: 1.2em;
+    line-height: 1.6;
+    color: #ddd;
+}
+
+button {
+    background: rgba(255,204,0,0.1);
+    color: #ffcc00;
+    border: 2px solid #ffcc00;
+    padding: 15px 30px;
+    margin: 15px;
+    font-size: 1.1em;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(4px);
+}
+
+button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 204, 0, 0.2);
+    transition: all 0.4s ease;
+}
+
+button:hover::before {
+    left: 0;
+}
+
+button:hover {
+    box-shadow: 0 0 15px #ffcc00, 0 0 25px #ffcc00;
+    transform: translateY(-3px);
+}
+
+.logo {
+    width: 120px;
+    margin: 20px auto;
+    display: block;
+    filter: drop-shadow(0 0 10px #ffcc00);
+    animation: floatLogo 4s ease-in-out infinite;
+}
+
+@keyframes floatLogo {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.quote {
+    margin-top: 50px;
+    font-style: italic;
+    color: #ffcc00;
+    font-size: 1.2em;
+    text-shadow: 0 0 5px #ffcc00;
+}
+
+footer {
+    margin-top: 40px;
+    font-size: 1em;
+    color: #888;
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin: 30px 0;
+}
+
+.gallery img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 2px solid #ffcc00;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px #ffcc00, 0 0 25px #ffcc00;
+}
+
+@media (max-width: 600px) {
+    h1 { font-size: 2em; }
+    p, .quote, footer { font-size: 1em; }
+    button { width: 80%; }
+    .gallery img { width: 100px; height: 100px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Star Background -->
+<div class="stars" id="stars"></div>
+
+<div class="container">
+    <img src="LogoDZ-removebg-preview.png" alt="Batman Logo" class="logo">
+    <h1>DZ'S KnightVault🦇</h1>
+    <p>
+        Step into the KnightVault.<br>
+    </p>
+
+    <button onclick="window.open('https://open.spotify.com/user/31ik7j4yncbfqjcy7wtfj4e7xl5a?si=51e5c29948e048a5')">DZ's Spotify</button>
+    <button onclick="window.open('https://www.instagram.com/hizayaatu/')">DZ's Instagram</button>
+    <button onclick="window.open('https://medium.com/@Dzzzzzz/')">DZ's Medium</button>
+
+
+    <p class="quote">
+        "Vengeance won't change the past, mine or anyone else's. I have to become more. People need hope. To know someone's out there for them."<br>– BATMAN
+    </p>
+
+    <footer>
+        Thank You !.<br>
+        ©DZ.
+    </footer>
+</div>
+
+<!-- Star Generation Script -->
+<script>
+// Generate stars dynamically
+const starsContainer = document.getElementById('stars');
+const numStars = 120;
+for (let i = 0; i < numStars; i++) {
+    const star = document.createElement('div');
+    star.className = 'star';
+    star.style.left = Math.random() * 100 + 'vw';
+    star.style.top = Math.random() * 100 + 'vh';
+    star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+    star.style.opacity = Math.random();
+    starsContainer.appendChild(star);
+}
+</script>
+
+</body>
+</html>
